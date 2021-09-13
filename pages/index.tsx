@@ -1,1 +1,1 @@
-export { default } from '@/amount/view-page'
+export { default } from '@/features/amount/view-page'
