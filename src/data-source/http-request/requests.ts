@@ -1,5 +1,6 @@
 import env from '@/env'
 import { Storage } from '@/data-source/storage'
+import { AuthConstants } from '@/features/authentication/auth-constants.enum'
 import { FetchParams } from './types'
 
 const baseURLEndpoint = env.fatBaseURL
@@ -23,7 +24,9 @@ export function appHttpRequest(
     headers: {
       ...(init?.headers || {}),
       'Content-Type': 'application/json',
-      Authorization: `Bearer ${new Storage().getItem('accessToken')}`,
+      Authorization: `Bearer ${new Storage('session').getItem(
+        AuthConstants.token
+      )}`,
     },
   })
 
