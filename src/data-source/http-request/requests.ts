@@ -1,9 +1,7 @@
 import env from '@/env'
-import { Storage } from '@/data-source/storage'
-import { AuthConstants } from '@/features/authentication/auth-constants.enum'
 import { FetchParams } from './types'
 
-const baseURLEndpoint = env.fatBaseURL
+const baseURLEndpoint = env.baseUrl
 
 export function nativeFetch(...[input, init]: FetchParams): Promise<Response> {
   return fetch(input, init)
@@ -24,9 +22,8 @@ export function appHttpRequest(
     headers: {
       ...(init?.headers || {}),
       'Content-Type': 'application/json',
-      Authorization: `Bearer ${new Storage('session').getItem(
-        AuthConstants.token
-      )}`,
+      'x-app-id': env.appId,
+      'x-app-key': env.appKey,
     },
   })
 

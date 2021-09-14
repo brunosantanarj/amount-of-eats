@@ -4,6 +4,6 @@ import AmountViewPage from './AmountViewPage'
 describe('<AmountViewPage />', () => {
   it('should render correctly main tag', () => {
     render(<AmountViewPage />)
-    expect(screen.getByText(/view-page/).tagName).toEqual('MAIN')
+    expect(screen.getByTestId(/view-page/).tagName).toEqual('MAIN')
   })
 })

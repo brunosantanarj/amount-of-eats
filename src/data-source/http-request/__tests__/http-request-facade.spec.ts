@@ -4,8 +4,9 @@ const globalFech = global.fetch as any
 
 const mockHeaders = {
   headers: {
-    Authorization: 'Bearer ',
     'Content-Type': 'application/json',
+    'x-app-id': undefined,
+    'x-app-key': undefined,
   },
 }
 
@@ -28,7 +29,7 @@ describe('Http Request Facade', () => {
   it('should have called default', () => {
     httpRequest('/test')
     expect(global.fetch).toHaveBeenCalledWith(
-      'https://platform.fatsecret.com/rest/server.api/test',
+      'https://trackapi.nutritionix.com/v2//test',
       mockHeaders
     )
   })
@@ -44,7 +45,7 @@ describe('Http Request Facade', () => {
   it('should have get method', () => {
     httpRequest.get('/food')
     expect(global.fetch).toHaveBeenCalledWith(
-      'https://platform.fatsecret.com/rest/server.api/food',
+      'https://trackapi.nutritionix.com/v2//food',
       { method: 'GET', ...mockHeaders }
     )
   })
@@ -52,7 +53,7 @@ describe('Http Request Facade', () => {
   it('should have post method', () => {
     httpRequest.post('/food')
     expect(global.fetch).toHaveBeenCalledWith(
-      'https://platform.fatsecret.com/rest/server.api/food',
+      'https://trackapi.nutritionix.com/v2//food',
       { method: 'POST', ...mockHeaders }
     )
   })
@@ -60,7 +61,7 @@ describe('Http Request Facade', () => {
   it('should have put method', () => {
     httpRequest.put('/food')
     expect(global.fetch).toHaveBeenCalledWith(
-      'https://platform.fatsecret.com/rest/server.api/food',
+      'https://trackapi.nutritionix.com/v2//food',
       { method: 'PUT', ...mockHeaders }
     )
   })
@@ -68,7 +69,7 @@ describe('Http Request Facade', () => {
   it('should have patch method', () => {
     httpRequest.patch('/food')
     expect(global.fetch).toHaveBeenCalledWith(
-      'https://platform.fatsecret.com/rest/server.api/food',
+      'https://trackapi.nutritionix.com/v2//food',
       { method: 'PATCH', ...mockHeaders }
     )
   })
@@ -76,12 +77,12 @@ describe('Http Request Facade', () => {
   it('should have headers', () => {
     httpRequest.patch('/food', {
       headers: {
-        Authorization: 'Bearer token',
+        Authorization: 'Bearer ',
         'Content-Type': 'application/json',
       },
     })
     expect(global.fetch).toHaveBeenCalledWith(
-      'https://platform.fatsecret.com/rest/server.api/food',
+      'https://trackapi.nutritionix.com/v2//food',
       {
         method: 'PATCH',
         headers: {

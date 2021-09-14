@@ -8,7 +8,7 @@
     "type-check": "tsc --pretty --noEmit",
     "format": "prettier --write .",
     "lint": "eslint . --ext ts --ext tsx --ext js",
-    "test": "jest",
+    "test": "jest --coverage",
     "test-all": "yarn lint && yarn type-check && yarn test"
   },
   "husky": {
@@ -24,6 +24,7 @@
     ]
   },
   "dependencies": {
+    "antd": "^4.16.13",
     "next": "latest",
     "ramda": "^0.27.1",
     "react": "^17.0.2",
